@@ -34,9 +34,6 @@ app.get('/post/:postTitle', function (req, res) {
         post: posts[i]
       });
     }
-    else {
-      res.render('errortemp');
-    }
   }
 });
 app.get('/compose', function (req, res) {
@@ -49,6 +46,9 @@ app.post('/compose', function (req, res) {
   }
   posts.push(post);
   res.redirect('/');
+});
+app.get('*', function (req, res) {
+  res.status(404).send('Nothing here to see');
 });
 app.listen(3000, function () {
   console.log("Server started on port 3000");
